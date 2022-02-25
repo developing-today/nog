@@ -1,0 +1,75 @@
+module ZK.
+
+Notes on a note-taking system, inspired by Zettelkasten.
+
+https://blog.zdsmith.com/posts/a-specification-of-a-note-taking-program.html
+https://github.com/subsetpark/pantagruel
+
+
+Line ⇐ String.
+Note ⇐ [Line].
+
+The basic operation we’re describing is indexing: taking all the notes in our set and updating them with references to other notes. That’s all this system does; the notes themselves can be written and read with a standard text editor, and most text editors have a “go to file” procedure, so even the navigation from note to note can be done within the editor.
+
+The only thing it needs help with is finding the connections between notes.
+
+index notes: [Note].
+
+Indexing does two things:
+
+It updates each note, in place. All backlinks to each note are placed at the beginning of it, and all references contained within it are placed at the end.
+all n: notes ⇒
+   nʹ = backlinks n + body n + references n
+   and name nʹ = name n.
+
+It maintains an Index. Indices aren’t notes - they aren’t affected by indexing, in particular. They are simply a list of links to each note in the set, ordered by creation time.
+some1 i: Index ⇒
+   all n: notesʹ ⇒ ref-note n in i
+   and all (n, m): notesʹ ⇒
+      created-at n < created-at m → i (ref-note n) < i (ref-note m).
+
+;
+
+Index ⇐ [Line].
+
+A Reference is a line of text that’s read and written by the system. Both backlinks and (forward) references are simply collections of References.
+
+Reference ⇐ Line.
+backlinks n: Note ⇒ {Reference}.
+references n: Note ⇒ [Reference].
+
+name n: Note ⇒ String.
+body n: Note ⇒ [Line].
+created-at n: Note ⇒ Date.
+
+ref s: String ⇒ Reference.
+ref-note n: Note ⇒ Reference.
+
+To refer to a given name, we simply insert a line with a recognized string in front of it, followed by the name. For instance: %ref:scifi\ authors. In particular, it’s important to escape any delimiters in the name; this is to allow the “go to file under cursor” command to recognize the whole name rather than the first part, in the case of names with spaces.
+
+ref s = %ref: + escape s + \n.
+
+It follows then that a reference to a note is simply a reference to its filename.
+
+ref-note n = ref (name n).
+
+body n = [all line: n, ~(line in Reference) ⇒ line].
+
+As mentioned above, to index a note is to take the note body, prepend all of the backlinks to that note, and append all the references to other notes (or other potential notes) contained in the body. A backlink is a reference to any note that links to this one; a (forward) reference is a reference to any note which is linked to by this one.
+
+backlinks n = {all m: Note, (bracketed (name n)) in m ⇒ ref-note m}.
+references n = [all s: String, (bracketed s) in n ⇒ ref s].
+
+It’s worth noting that references can be ordered as they appear in the note body; but backlinks have no defined order.
+
+all (r, s): references n ⇒
+   n (bracketed (name r)) < n (bracketed (name s)) → references r < references s.
+
+;
+
+To link to any name, simply enclose it in square brackets in the body of a note.
+
+escape s: String ⇒ String.
+bracketed s: String ⇒ String.
+
+bracketed s = [ + s + ].

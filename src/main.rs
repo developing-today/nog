@@ -1,3 +1,6 @@
+mod rom;
+use rom::rom_repl::repl;
 fn main() {
-    println!("Hello, world!");
+    println!("Welcome, Tenno.");
+    repl();
 }
