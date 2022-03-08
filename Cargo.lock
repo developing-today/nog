@@ -115,9 +115,9 @@ dependencies = [
 
 [[package]]
 name = "hash_set_map"
-version = "0.3.2"
+version = "0.3.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "dd477097929de7ccbd7f59e5e20de2da20fa897e68584e1eb4959a55def344d5"
+checksum = "3c1109cd22692a1836c9fdba873919aef66c86270ff6ec6bfcd0446d7c67184c"
 dependencies = [
  "hex",
  "sha1",
@@ -131,9 +131,9 @@ checksum = "7f24254aa9a54b5c858eaee2f5bccdb46aaf0e486a595ed5fd8f86ba55232a70"
 
 [[package]]
 name = "hygge"
-version = "0.3.1"
+version = "0.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ec96b6ecb7816150380f9a02633f2cf04a2093d372c1aa0525a47e8d54e520b6"
+checksum = "d19a4be20b2abaa2e5778ce0dc2d049b293d0a8b8900198bdf65cde7e2df7554"
 dependencies = [
  "kdl",
 ]

@@ -1,6 +1,6 @@
 mod rom;
 use rom::rom_repl::repl;
 fn main() {
-    println!("Welcome, Tenno.");
+    println!("Welcome, 0000000000.");
     repl();
 }
