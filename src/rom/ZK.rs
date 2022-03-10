@@ -9,6 +9,10 @@ pub struct Binder {
     pub identifier: Option<Identifier>,
     pub ownership: Option<Ownership>,
 }
+/// !Default
+/// @!dez/lulz/*programming*
+/// #math=hard,tutorial,programming
+/// $DSP
 
 #[derive(Debug)]
 pub struct Notes {
@@ -38,6 +42,10 @@ pub struct Notes {
     pub citations_identifier: Option<Identifier>,
     pub description: Option<Description>,
 }
+/// all repeating whitespace is replaced with equivalent newline, tab, or space
+/// certain contexts consume whitespace as a delimiter
+/// the only circumvention is to escape each repeating character with '\'
+/// or by using rust-style r#"..."# raw strings, which will never be modified
 #[derive(Debug)]
 pub struct SlipBox {
     pub hash: String,
@@ -51,6 +59,7 @@ pub struct SlipBox {
 }
 
 #[derive(Debug)]
+/// I was promised a web and I will get one even if I have to make it myself.
 pub struct Identifier {
     pub name: String,
     /// by convention, the wiki/true name hashed alone is the canonical hash for meta representation of figures who do not have a hash (Such as Michaelangelo, Prince, Michelangelo (Teenage Mutant Ninja Turtles), Ged, Aragorn son of Arathorn, and so on.)
@@ -288,6 +297,7 @@ pub struct Comment {
 pub struct ZK {
     pub text: Option<String>,
     pub time: String,
+    /// todo join opt<time, accuracy, zone>
     pub time_accuracy: Option<String>,
     pub time_zone: Option<String>,
     pub year: String,
@@ -321,7 +331,7 @@ pub struct Signature {
 #[derive(Debug)]
 pub struct Key {
     pub hash: String,
-    pub public_key: String,
+    pub public_key: Option<String>,
     pub signature: Option<Signature>,
     pub id: Option<String>,
     pub name: Option<String>,
@@ -329,8 +339,8 @@ pub struct Key {
     pub version: Option<String>,
     pub note: Option<String>,
     pub created_at: Option<String>,
-    pub description: Option<Description>,
     pub identifier: Identifier,
+    pub description: Option<Description>,
     pub identifiers: Option<Identifiers>,
 }
 
