@@ -9,10 +9,10 @@ pub struct Binder {
     pub identifier: Option<Identifier>,
     pub ownership: Option<Ownership>,
 }
-/// !Default
-/// @!dez/lulz/*programming*
-/// #math=hard,tutorial,programming
-/// $DSP
+//////     // / !Default
+//////     // / @!dez/lulz/*programming*
+//////     // / #math=hard,tutorial,programming
+//////     // / $DSP
 
 #[derive(Debug)]
 pub struct Notes {
@@ -172,7 +172,7 @@ pub struct Description {
 pub struct Line {
     pub zk: ZK,
     pub comments: Option<Comments>,
-    pub citation: Option<Citation>,
+    // pub citation: Option<Citation>,
     pub citations: Option<Citations>,
     pub signatures: Option<Signatures>,
 }

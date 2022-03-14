@@ -1,5 +1,5 @@
-use std::io;
 use std::io::Write;
+use std::{io, rc::Rc};
 
 use crate::rom::ZK::*;
 
@@ -69,204 +69,484 @@ pub fn repl() -> ! {
                     signatures: None,
                 },
                 comments: None,
-                citation: None,
+                // citation: None,
                 citations: None,
                 signatures: None,
             }
         );
+        let zkc = ZK {
+            text: None,
+            time: "8".to_string(),
+            time_accuracy: None,
+            time_zone: None,
+            year: "9".to_string(),
+            locale: None,
+            location: None,
+            hash: "10".to_string(),
+            tags: None,
+            categories: None,
+            comments: None,
+            signatures: None,
+        };
+        let ll = Line {
+            zk: zkc,
+            comments: None,
+            // citation: None,
+            citations: None,
+            signatures: None,
+        };
+        let zxs = ZK {
+            text: None,
+            time: "8".to_string(),
+            time_accuracy: None,
+            time_zone: None,
+            year: "9".to_string(),
+            locale: None,
+            location: None,
+            hash: "10".to_string(),
+            tags: None,
+            categories: None,
+            comments: None,
+            signatures: None,
+        };
+        let lz = Line {
+            zk: zxs,
+            comments: None,
+            // citation: None,
+            citations: None,
+            signatures: None,
+        };
+        let zb = {
+            let mut x = Vec::new();
+            x.push(lz);
+            Lines {
+                lines: x,
+                hash: "7".to_string(),
+                line: Some(ll),
+            }
+        };
+        let zz = Note {
+            hash: "7".to_string(),
+            lines: zb,
+            identifier: None,
+            identifiers: None,
+            description: None,
+            verifications: None,
+        };
+        let xx = Vec::new();
 
-        let x = Binder {
-            hash: "1".to_string(),
-            visibility: Some("2".to_string()),
-            public: Some(true),
-            private: Some("yeah".to_ascii_lowercase()),
-            identifier: Some(Identifier {
-                name: "test".to_string(),
-                aliases: None,
-                hash: "1".to_string(),
-                hash_aliases: None,
-                file: None,
-                prefix: None,
-                prefix_aliases: None,
-                prefix_hash: None,
-                prefix_hash_aliases: None,
-                root: None,
-                remote_root: None,
-                remote_tap_root: None,
-                path: None,
-                url: None,
-                tags: None,
-                categories: None,
-                comments: None,
-                identifiers: None,
-                backlinks: None,
-                references: None,
-            }),
-            notes: Notes {
-                hash: "4".to_string(),
-                identifier: Identifier {
-                    name: "test".to_string(),
-                    aliases: None,
-                    hash: "1".to_string(),
-                    hash_aliases: None,
-                    file: None,
-                    prefix: None,
-                    prefix_aliases: None,
-                    prefix_hash: None,
-                    prefix_hash_aliases: None,
-                    root: None,
-                    remote_root: None,
-                    remote_tap_root: None,
-                    path: None,
-                    url: None,
+        let xxx = {
+            // x.push(Note {
+            //     hash: "7".to_string(),
+            //     lines: {x.push(
+            //         let x = Vec::new();
+            //         x.push(Line {
+            //             zk: ZK {
+            //                 text: None,
+            //                 time: "8".to_string(),{
+            let mut x = xx;
+            x.push(Line {
+                zk: ZK {
+                    text: None,
+                    time: "8".to_string(),
+                    time_accuracy: None,
+                    time_zone: None,
+                    year: "9".to_string(),
+                    locale: None,
+                    location: None,
+                    hash: "10".to_string(),
                     tags: None,
                     categories: None,
                     comments: None,
-                    identifiers: None,
-                    backlinks: None,
-                    references: None,
+                    signatures: None,
                 },
-                // identifier: Identifier { },
-                visibility: Some("5".to_string()),
-                private: Some(true),
-                public: Some(true),
-                file: Some("6".to_string()),
-                note: Note {
-                    hash: "7".to_string(),
-                    lines: {
-                        let x = Vec::new();
-                        x.push(Line {
-                            zk: ZK {
-                                text: None,
-                                time: "8".to_string(),
-                                time_accuracy: None,
-                                time_zone: None,
-                                year: "9".to_string(),
-                                locale: None,
-                                location: None,
-                                hash: "10".to_string(),
-                                tags: None,
-                                categories: None,
-                                comments: None,
-                                signatures: None,
-                            },
-                            comments: None,
-                            citation: None,
-                            citations: None,
-                            signatures: None,
-                        });
-                        Lines {
-                            lines: x,
-                            hash: "7".to_string(),
-                            line: Some(Line {
-                                zk: ZK {
-                                    text: None,
-                                    time: "8".to_string(),
-                                    time_accuracy: None,
-                                    time_zone: None,
-                                    year: "9".to_string(),
-                                    locale: None,
-                                    location: None,
-                                    hash: "10".to_string(),
-                                    tags: None,
-                                    categories: None,
-                                    comments: None,
-                                    signatures: None,
-                                },
-                                comments: None,
-                                citation: None,
-                                citations: None,
-                                signatures: None,
-                            }),
-                        }
-                    },
-                    identifier: None,
-                    identifiers: None,
-                    description: None,
-                    verifications: None,
-                },
-                notes: {
-                    let x = Vec::new();
-                    x.push(Note {
-                        hash: "7".to_string(),
-                        lines: {
-                            let x = Vec::new();
-                            x.push(Line {
-                                zk: ZK {
-                                    text: None,
-                                    time: "8".to_string(),
-                                    time_accuracy: None,
-                                    time_zone: None,
-                                    year: "9".to_string(),
-                                    locale: None,
-                                    location: None,
-                                    hash: "10".to_string(),
-                                    tags: None,
-                                    categories: None,
-                                    comments: None,
-                                    signatures: None,
-                                },
-                                comments: None,
-                                citation: None,
-                                citations: None,
-                                signatures: None,
-                            });
-                            Lines {
-                                lines: x,
-                                hash: "7".to_string(),
-                                line: Some(Line {
-                                    zk: ZK {
-                                        text: None,
-                                        time: "8".to_string(),
-                                        time_accuracy: None,
-                                        time_zone: None,
-                                        year: "9".to_string(),
-                                        locale: None,
-                                        location: None,
-                                        hash: "10".to_string(),
-                                        tags: None,
-                                        categories: None,
-                                        comments: None,
-                                        signatures: None,
-                                    },
-                                    comments: None,
-                                    citation: None,
-                                    citations: None,
-                                    signatures: None,
-                                }),
-                            }
-                        },
-                        identifier: None,
-                        identifiers: None,
-                        description: None,
-                        verifications: None,
-                    });
-                    x
-                },
-                author_data: None,
-                backlinks: None,
-                backlinks_identifier: None,
-                cite: None,
-                cite_identifier: None,
-                citation_identifier: None,
-                citation: None,
+                comments: None,
+                // citation: None,
                 citations: None,
-                citations_identifier: None,
-                description: None,
-                verifications: None,
-                text: None,
-                line: None,
-                lines: None,
-                groups: None,
-                local_identifier: None,
-                remote_identifier: None,
-            },
-            ownership: None,
-            binder: {
-                let x = Vec::new();
-                x
-            },
+                signatures: None,
+            });
+            Lines {
+                lines: x,
+                hash: "7".to_string(),
+                line: Some(Line {
+                    zk: ZK {
+                        text: None,
+                        time: "8".to_string(),
+                        time_accuracy: None,
+                        time_zone: None,
+                        year: "9".to_string(),
+                        locale: None,
+                        location: None,
+                        hash: "10".to_string(),
+                        tags: None,
+                        categories: None,
+                        comments: None,
+                        signatures: None,
+                    },
+                    comments: None,
+                    // citation: None,
+                    citations: None,
+                    signatures: None,
+                }),
+            }
         };
+        // //                 time_accuracy: None,
+        // //                 time_zone: None,
+        // //                 year: "9".to_string(),
+        // //                 locale: None,
+        // //                 location: None,
+        // //                 hash: "10".to_string(),
+        // //                 tags: None,
+        // //                 categories: None,
+        // //                 comments: None,
+        // //                 signatures: None,
+        // //             },
+        // //             comments: None,
+        // //             // citation: None,
+        // //             citations: None,
+        // //             signatures: None,
+        // //         });
+        // //         Lines {
+        // //             lines: x,
+        // //             hash: "7".to_string(),
+        // //             line: Some(Line {
+        // //                 zk: ZK {
+        // //                     text: None,
+        // //                     time: "8".to_string(),
+        // //                     time_accuracy: None,
+        // //                     time_zone: None,
+        // //                     year: "9".to_string(),
+        // //                     locale: None,
+        // //                     location: None,
+        // //                     hash: "10".to_string(),
+        // //                     tags: None,
+        // //                     categories: None,
+        // //                     comments: None,
+        // //                     signatures: None,
+        // //                 },
+        // //                 comments: None,
+        // //                 // citation: None,
+        // //                 citations: None,
+        // //                 signatures: None,
+        // //             }),
+        // //         }
+        // //     },
+        // //     identifier: None,
+        // //     identifiers: None,
+        // //     description: None,
+        // //     verifications: None,
+        // // });
+        let ni = Identifier {
+            name: "test".to_string(),
+            aliases: None,
+            hash: "1".to_string(),
+            hash_aliases: None,
+            file: None,
+            prefix: None,
+            prefix_aliases: None,
+            prefix_hash: None,
+            prefix_hash_aliases: None,
+            root: None,
+            remote_root: None,
+            remote_tap_root: None,
+            path: None,
+            url: None,
+            tags: None,
+            categories: None,
+            comments: None,
+            identifiers: None,
+            backlinks: None,
+            references: None,
+        };
+        let z = Vec::new();
+        let nn = Notes {
+            hash: "4".to_string(),
+            identifier: ni,
+            // identifier: Identifier { },
+            visibility: Some("5".to_string()),
+            private: Some(true),
+            public: Some(true),
+            file: Some("6".to_string()),
+            note: zz,
+            notes: z,
+            author_data: None,
+            backlinks: None,
+            backlinks_identifier: None,
+            cite: None,
+            cite_identifier: None,
+            citation_identifier: None,
+            citation: None,
+            citations: None,
+            citations_identifier: None,
+            description: None,
+            verifications: None,
+            text: None,
+            line: None,
+            lines: None,
+            groups: None,
+            local_identifier: None,
+            remote_identifier: None,
+        };
+        let ii = Identifier {
+            name: "test".to_string(),
+            aliases: None,
+            hash: "1".to_string(),
+            hash_aliases: None,
+            file: None,
+            prefix: None,
+            prefix_aliases: None,
+            prefix_hash: None,
+            prefix_hash_aliases: None,
+            root: None,
+            remote_root: None,
+            remote_tap_root: None,
+            path: None,
+            url: None,
+            tags: None,
+            categories: None,
+            comments: None,
+            identifiers: None,
+            backlinks: None,
+            references: None,
+        };
+        let iii = Identifier {
+            name: "test".to_string(),
+            aliases: None,
+            hash: "1".to_string(),
+            hash_aliases: None,
+            file: None,
+            prefix: None,
+            prefix_aliases: None,
+            prefix_hash: None,
+            prefix_hash_aliases: None,
+            root: None,
+            remote_root: None,
+            remote_tap_root: None,
+            path: None,
+            url: None,
+            tags: None,
+            categories: None,
+            comments: None,
+            identifiers: None,
+            backlinks: None,
+            references: None,
+        };
+        // make slipbox
+        // let zyx = {
+        //     let mut x = Vec::new();
+        //     x.push(nn);
+        //     Notes {
+        //         hash: "4".to_string(),
+        //         identifier: iii,
+        //         // identifier: Identifier { },
+        //         visibility: Some("5".to_string()),
+        //         private: Some(true),
+        //         public: Some(true),
+        //         file: Some("6".to_string()),
+        //         note: zz,
+        //         notes: z,
+        //         author_data: None,
+        //         backlinks: None,
+        //         backlinks_identifier: None,
+        //         cite: None,
+        //         cite_identifier: None,
+        //         citation_identifier: None,
+        //         citation: None,
+        //         citations: None,
+        //         citations_identifier: None,
+        //         description: None,
+        //         verifications: None,
+        //         text: None,
+        //         line: None,
+        //         lines: None,
+        //         groups: None,
+        //         local_identifier: None,
+        //         remote_identifier: None,
+        //     }
+        // };
+        let n = {
+            let mut x = Vec::new();
+            x
+        };
+        // make lines
+
+        let l = Line {
+            zk: ZK {
+                text: None,
+                time: "8".to_string(),
+                time_accuracy: None,
+                time_zone: None,
+                year: "9".to_string(),
+                locale: None,
+                location: None,
+                hash: "10".to_string(),
+                tags: None,
+                categories: None,
+                comments: None,
+                signatures: None,
+            },
+            comments: None,
+            // citation: None,
+            citations: None,
+            signatures: None,
+        };
+        let l2 = Lines {
+            hash: "123".to_string(),
+            lines: vec![l],
+            line: None,
+        };
+        // make note
+        let nt = Note {
+            lines: l2,
+            hash: "11".to_string(),
+            identifier: None,
+            identifiers: None,
+            description: None,
+            verifications: None,
+        };
+        // make cs variable which is a Notes object
+        let cs = Notes {
+            hash: "4".to_string(),
+            identifier: ii,
+            // identifier: Identifier { },
+            visibility: Some("5".to_string()),
+            private: Some(true),
+            public: Some(true),
+            file: Some("6".to_string()),
+            note: nt,
+            notes: n,
+            author_data: None,
+            backlinks: None,
+            backlinks_identifier: None,
+            cite: None,
+            cite_identifier: None,
+            citation_identifier: None,
+            citation: None,
+            citations: None,
+            citations_identifier: None,
+            description: None,
+            verifications: None,
+            text: None,
+            line: None,
+            lines: None,
+            groups: None,
+            local_identifier: None,
+            remote_identifier: None,
+        };
+        let we = {
+            let mut x = Vec::new();
+            x.push(cs);
+            x
+        };
+        // make identifier
+        let id = Identifier {
+            name: "test".to_string(),
+            aliases: None,
+            hash: "1".to_string(),
+            hash_aliases: None,
+            file: None,
+            prefix: None,
+            prefix_aliases: None,
+            prefix_hash: None,
+            prefix_hash_aliases: None,
+            root: None,
+            remote_root: None,
+            remote_tap_root: None,
+            path: None,
+            url: None,
+            tags: None,
+            categories: None,
+            comments: None,
+            identifiers: None,
+            backlinks: None,
+            references: None,
+        };
+        // let mut daz = Vec::new();
+        let line1 = Line {
+            zk: ZK {
+                text: None,
+                time: "8".to_string(),
+                time_accuracy: None,
+                time_zone: None,
+                year: "9".to_string(),
+                locale: None,
+                location: None,
+                hash: "10".to_string(),
+                tags: None,
+                categories: None,
+                comments: None,
+                signatures: None,
+            },
+            comments: None,
+            // citation: None,
+            citations: None,
+            signatures: None,
+        };
+        let lines2 = Lines {
+            hash: "123".to_string(),
+            lines: vec![line1],
+            line: None,
+        };
+        let asd = Note {
+            lines: lines2,
+            hash: "11".to_string(),
+            identifier: None,
+            identifiers: None,
+            description: None,
+            verifications: None,
+        };
+        // let notes = Notes {
+        //     hash: "4".to_string(),
+        //     identifier: id,
+        //     // identifier: Identifier { },
+        //     visibility: Some("5".to_string()),
+        //     private: Some(true),
+        //     public: Some(true),
+        //     file: Some("6".to_string()),
+        //     note: asd,
+        //     notes: daz,
+        //     author_data: None,
+        //     backlinks: None,
+        //     backlinks_identifier: None,
+        //     cite: None,
+        //     cite_identifier: None,
+        //     citation_identifier: None,
+        //     citation: None,
+        //     citations: None,
+        //     citations_identifier: None,
+        //     description: None,
+        //     verifications: None,
+        //     text: None,
+        //     line: None,
+        //     lines: None,
+        //     groups: None,
+        //     local_identifier: None,
+        //     remote_identifier: None,
+        // };
+        // let m = SlipBox {
+        //     notes: notes,
+        //     identifier: None,
+        //     hash: "1".to_string(),
+        //     slipbox: we,
+        //     visibility: None,
+        //     private: None,
+        //     public: None,
+        //     ownership: None,
+        // };
+        // let yyy = Vec::new();
+        // let y = Binder {
+        //     hash: "1".to_string(),
+        //     visibility: Some("2".to_string()),
+        //     public: Some(true),
+        //     private: Some("yeah".to_ascii_lowercase()),
+        //     identifier: Some(ii),
+        //     notes: nn,
+        //     ownership: None,
+        //     binder: yyy,
+        // };
+        let x = nn;
+        // let x = m;
+        // = Box::<Binder>::new(y);
 
         println!("${x:#?}");
     }
