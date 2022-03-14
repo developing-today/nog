@@ -532,7 +532,6 @@ pub fn repl() -> ! {
         let notes = Notes {
             hash: "4".to_string(),
             identifier: id,
-            // identifier: Identifier { },
             visibility: Some("5".to_string()),
             private: Some(true),
             public: Some(true),
@@ -629,7 +628,8 @@ pub fn repl() -> ! {
             public: None,
             ownership: Some(own),
         };
-        let yyy = Vec::new();
+        let mut yyy = Vec::new();
+        yyy.push(m);
         let y = Binder {
             hash: "1".to_string(),
             visibility: Some("2".to_string()),
@@ -641,8 +641,8 @@ pub fn repl() -> ! {
             binder: yyy,
         };
         // let x = nn;
-        let x = m;
-        // = Box::<Binder>::new(y);
+        let x //= m;
+        = Box::<Binder>::new(y);
 
         println!("${x:#?}");
     }

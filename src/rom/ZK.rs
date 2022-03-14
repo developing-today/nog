@@ -107,20 +107,20 @@ pub struct Note {
 #[derive(Debug)]
 pub struct Group {
     pub authors: Authors,
-    // pub identifier: Identifier,
-    // pub description: Option<Description>,
-    // pub identifiers: Option<Identifiers>,
-    // pub bio: Option<Notes>,
-    // pub notes: Option<Notes>,
+    pub identifier: Identifier,
+    pub description: Option<Description>,
+    pub identifiers: Option<Identifiers>,
+    // pub bio: Option<Notes>, // TODO: OVERFLOW FIRST SUBMIT
+    // pub notes: Option<Notes>, // TODO: OVERFLOW FIRST SUBMIT
 }
 
 #[derive(Debug)]
 pub struct Authors {
     pub hash: String,
-    // pub authors: Vec<Author>,
-    // pub identifier: Identifier,
+    pub authors: Vec<Author>,
+    pub identifier: Identifier,
     pub description: Option<Description>,
-    // pub identifiers: Option<Identifiers>,
+    pub identifiers: Option<Identifiers>,
 }
 
 #[derive(Debug)]
@@ -135,44 +135,44 @@ pub struct Author {
 
 #[derive(Debug)]
 pub struct Description {
-    // pub identifier: Identifier,
+    // pub identifier: Identifier, // TODO: OVERFLOW FIRST SUBMIT
     pub hash: String,
-    // pub about: Option<String>,
-    // pub contact: Option<String>,
-    // pub username: Option<String>,
-    // pub handle: Option<String>,
-    // pub aliases: Option<Tags>,
-    // pub links: Option<Tags>,
-    // pub avatar: Option<String>,
-    // pub location: Option<String>,
-    // pub website: Option<String>,
-    // pub social: Option<Tags>,
-    // pub tags: Option<Tags>,
-    // pub categories: Option<Categories>,
-    // pub references: Option<Citations>,
-    // pub references_identifier: Option<Identifier>,
-    // pub backlinks: Option<Citations>,
-    // pub backlinks_identifier: Option<Identifier>,
-    // pub verifications: Option<Verifications>,
-    // pub created_at: Option<String>,
-    // pub updated_at: Option<String>,
-    // pub updated_hash: String,
-    // pub updated_by: Option<String>,
-    // pub updated_note: Option<String>,
-    // pub updated_reason: Option<String>,
-    // pub updated_code: Option<String>,
-    // pub deleted_at: Option<String>,
-    // pub deleted_by: Option<Verifications>,
-    // pub deleted_note: Option<String>,
-    // pub deleted_reason: Option<String>,
-    // pub deleted_code: Option<String>,
+    pub about: Option<String>,
+    pub contact: Option<String>,
+    pub username: Option<String>,
+    pub handle: Option<String>,
+    pub aliases: Option<Tags>,
+    pub links: Option<Tags>,
+    pub avatar: Option<String>,
+    pub location: Option<String>,
+    pub website: Option<String>,
+    pub social: Option<Tags>,
+    pub tags: Option<Tags>,
+    pub categories: Option<Categories>,
+    pub references: Option<Citations>,
+    // pub references_identifier: Option<Identifier>, // TODO: OVERFLOW FIRST SUBMIT
+    pub backlinks: Option<Citations>,
+    // pub backlinks_identifier: Option<Identifier>, // TODO: OVERFLOW FIRST SUBMIT
+    // pub verifications: Option<Verifications>, // TODO: OVERFLOW IMMEDIATE
+    pub created_at: Option<String>,
+    pub updated_at: Option<String>,
+    pub updated_hash: String,
+    pub updated_by: Option<String>,
+    pub updated_note: Option<String>,
+    pub updated_reason: Option<String>,
+    pub updated_code: Option<String>,
+    pub deleted_at: Option<String>,
+    // pub deleted_by: Option<Verifications>, // TODO: OVERFLOW IMMEDIATE
+    pub deleted_note: Option<String>,
+    pub deleted_reason: Option<String>,
+    pub deleted_code: Option<String>,
 }
 
 #[derive(Debug)]
 pub struct Line {
     pub zk: ZK,
     pub comments: Option<Comments>,
-    // pub citation: Option<Citation>,
+    // pub citation: Option<Citation>, // TODO: RECURSE COMPILE ERROR
     pub citations: Option<Citations>,
     pub signatures: Option<Signatures>,
 }
@@ -221,10 +221,10 @@ pub struct Identities {
 #[derive(Debug)]
 pub struct Groups {
     pub hash: String,
-    // pub groups: Vec<Group>,
-    // pub identifier: Option<Identifier>,
-    // pub identifiers: Option<Identifiers>,
-    // pub description: Option<Description>,
+    pub groups: Vec<Group>,
+    pub identifier: Option<Identifier>,
+    pub identifiers: Option<Identifiers>,
+    pub description: Option<Description>,
 }
 
 #[derive(Debug)]
@@ -297,7 +297,7 @@ pub struct Comment {
 pub struct ZK {
     pub text: Option<String>,
     pub time: String,
-    /// todo join opt<time, accuracy, zone>
+    /// TODO: join opt<time, accuracy, zone>
     pub time_accuracy: Option<String>,
     pub time_zone: Option<String>,
     pub year: String,
