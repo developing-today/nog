@@ -579,44 +579,69 @@ pub fn repl() -> ! {
             backlinks: None,
             references: None,
         };
+        let idddd = Identifier {
+            name: "test".to_string(),
+            aliases: None,
+            hash: "1".to_string(),
+            hash_aliases: None,
+            file: None,
+            prefix: None,
+            prefix_aliases: None,
+            prefix_hash: None,
+            prefix_hash_aliases: None,
+            root: None,
+            remote_root: None,
+            remote_tap_root: None,
+            path: None,
+            url: None,
+            tags: None,
+            categories: None,
+            comments: None,
+            identifiers: None,
+            backlinks: None,
+            references: None,
+        };
+
+        let author1 = Author {
+            identifier: idddd,
+            hash: "asd".to_string(),
+            description: None,
+            identifiers: None,
+            bio: None,
+            notes: None,
+        };
         let own = Ownership {
             identifier: ident11,
             identifiers: None,
             description: None,
-            // author: None,
-            // authors: None,
-            // group: None,
-            // groups: None,
+            author: Some(author1),
+            authors: None,
+            group: None,
+            groups: None,
         };
-        // let bbb = Binder {
-        //     hash: "1".to_string(),
-        //     visibility: Some("2".to_string()),
-        //     private: Some(true),
-        //     public: Some(true),
-
-        // let m = SlipBox {
-        //     notes: notes,
-        //     identifier: None,
-        //     hash: "1".to_string(),
-        //     slipbox: we,
-        //     visibility: None,
-        //     private: None,
-        //     public: None,
-        //     ownership: None,
-        // };
-        // let yyy = Vec::new();
-        // let y = Binder {
-        //     hash: "1".to_string(),
-        //     visibility: Some("2".to_string()),
-        //     public: Some(true),
-        //     private: Some("yeah".to_ascii_lowercase()),
-        //     identifier: Some(iii),
-        //     notes: nn,
-        //     ownership: None,
-        //     binder: yyy,
-        // };
-        let x = nn;
-        // let x = m;
+        let m = SlipBox {
+            notes: notes,
+            identifier: None,
+            hash: "1".to_string(),
+            slipbox: we,
+            visibility: None,
+            private: None,
+            public: None,
+            ownership: Some(own),
+        };
+        let yyy = Vec::new();
+        let y = Binder {
+            hash: "1".to_string(),
+            visibility: Some("2".to_string()),
+            public: Some(true),
+            private: Some("yeah".to_ascii_lowercase()),
+            identifier: Some(iii),
+            notes: nn,
+            ownership: None,
+            binder: yyy,
+        };
+        // let x = nn;
+        let x = m;
         // = Box::<Binder>::new(y);
 
         println!("${x:#?}");
