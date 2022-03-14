@@ -86,13 +86,13 @@ pub struct Identifier {
 
 #[derive(Debug)]
 pub struct Ownership {
-    pub identifier: Option<Identifier>,
+    pub identifier: Identifier,
     pub identifiers: Option<Identifiers>,
     pub description: Option<Description>,
-    pub author: Option<Author>,
-    pub authors: Option<Authors>,
-    pub group: Option<Group>,
-    pub groups: Option<Groups>,
+    // pub author: Option<Author>,
+    // pub authors: Option<Authors>,
+    // pub group: Option<Group>,
+    // pub groups: Option<Groups>,
 }
 
 #[derive(Debug)]

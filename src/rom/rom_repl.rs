@@ -365,7 +365,7 @@ pub fn repl() -> ! {
         //     }
         // };
         let n = {
-            let mut x = Vec::new();
+            let x = Vec::new();
             x
         };
         // make lines
@@ -495,34 +495,105 @@ pub fn repl() -> ! {
             description: None,
             verifications: None,
         };
-        // let notes = Notes {
-        //     hash: "4".to_string(),
-        //     identifier: id,
-        //     // identifier: Identifier { },
-        //     visibility: Some("5".to_string()),
+        let l3l = Line {
+            zk: ZK {
+                text: None,
+                time: "8".to_string(),
+                time_accuracy: None,
+                time_zone: None,
+                year: "9".to_string(),
+                locale: None,
+                location: None,
+                hash: "10".to_string(),
+                tags: None,
+                categories: None,
+                comments: None,
+                signatures: None,
+            },
+            comments: None,
+            // citation: None,
+            citations: None,
+            signatures: None,
+        };
+        let l3 = Lines {
+            hash: "123".to_string(),
+            lines: vec![l3l],
+            line: None,
+        };
+        // make note
+        let nt3 = Note {
+            lines: l3,
+            hash: "11".to_string(),
+            identifier: None,
+            identifiers: None,
+            description: None,
+            verifications: None,
+        };
+        let notes = Notes {
+            hash: "4".to_string(),
+            identifier: id,
+            // identifier: Identifier { },
+            visibility: Some("5".to_string()),
+            private: Some(true),
+            public: Some(true),
+            file: Some("6".to_string()),
+            note: asd,
+            notes: vec![nt3],
+            author_data: None,
+            backlinks: None,
+            backlinks_identifier: None,
+            cite: None,
+            cite_identifier: None,
+            citation_identifier: None,
+            citation: None,
+            citations: None,
+            citations_identifier: None,
+            description: None,
+            verifications: None,
+            text: None,
+            line: None,
+            lines: None,
+            groups: None,
+            local_identifier: None,
+            remote_identifier: None,
+        };
+        let ident11 = Identifier {
+            name: "test".to_string(),
+            aliases: None,
+            hash: "1".to_string(),
+            hash_aliases: None,
+            file: None,
+            prefix: None,
+            prefix_aliases: None,
+            prefix_hash: None,
+            prefix_hash_aliases: None,
+            root: None,
+            remote_root: None,
+            remote_tap_root: None,
+            path: None,
+            url: None,
+            tags: None,
+            categories: None,
+            comments: None,
+            identifiers: None,
+            backlinks: None,
+            references: None,
+        };
+        let own = Ownership {
+            identifier: ident11,
+            identifiers: None,
+            description: None,
+            // author: None,
+            // authors: None,
+            // group: None,
+            // groups: None,
+        };
+        // let bbb = Binder {
+        //     hash: "1".to_string(),
+        //     visibility: Some("2".to_string()),
         //     private: Some(true),
         //     public: Some(true),
-        //     file: Some("6".to_string()),
-        //     note: asd,
-        //     notes: daz,
-        //     author_data: None,
-        //     backlinks: None,
-        //     backlinks_identifier: None,
-        //     cite: None,
-        //     cite_identifier: None,
-        //     citation_identifier: None,
-        //     citation: None,
-        //     citations: None,
-        //     citations_identifier: None,
-        //     description: None,
-        //     verifications: None,
-        //     text: None,
-        //     line: None,
-        //     lines: None,
-        //     groups: None,
-        //     local_identifier: None,
-        //     remote_identifier: None,
-        // };
+
         // let m = SlipBox {
         //     notes: notes,
         //     identifier: None,
@@ -539,7 +610,7 @@ pub fn repl() -> ! {
         //     visibility: Some("2".to_string()),
         //     public: Some(true),
         //     private: Some("yeah".to_ascii_lowercase()),
-        //     identifier: Some(ii),
+        //     identifier: Some(iii),
         //     notes: nn,
         //     ownership: None,
         //     binder: yyy,
