@@ -1,25 +1,6 @@
-use std::io::Write;
-use std::{io, rc::Rc};
-
 use crate::rom::ZK::*;
-
-// // pub fn new(input: &str) -> ROMs {
-// //     // cli input arguments (clap?)
-// //     // <binary> <file descriptor> <file descriptor> ...
-// //     // run each sequentially, stop on first error
-// //     // <binary> "<string>"
-// //     // run as if it were a file
-// //     // <binary>
-// //     // open repl, parse at each newline,
-// //     // repl ignores newlines escaped with '\'
-// //     // todo: implement
-// //     // todo: flags
-// //     // ROMize(input)
-// // }
-
-// // fn rep(input: &str) -> ROMs {
-// //     new(input)
-// // }
+use std::io;
+use std::io::Write;
 
 pub fn repl() -> ! {
     std::io::stdout().flush().unwrap();
@@ -69,7 +50,7 @@ pub fn repl() -> ! {
                     signatures: None,
                 },
                 comments: None,
-                // citation: None,
+                // citation: None, // TODO: is this needed
                 citations: None,
                 signatures: None,
             }
@@ -91,7 +72,7 @@ pub fn repl() -> ! {
         let ll = Line {
             zk: zkc,
             comments: None,
-            // citation: None,
+            // citation: None, // TODO: is this needed
             citations: None,
             signatures: None,
         };
@@ -112,7 +93,7 @@ pub fn repl() -> ! {
         let lz = Line {
             zk: zxs,
             comments: None,
-            // citation: None,
+            // citation: None, // TODO: is this needed
             citations: None,
             signatures: None,
         };
@@ -133,109 +114,6 @@ pub fn repl() -> ! {
             description: None,
             verifications: None,
         };
-        let xx = Vec::new();
-
-        let xxx = {
-            // x.push(Note {
-            //     hash: "7".to_string(),
-            //     lines: {x.push(
-            //         let x = Vec::new();
-            //         x.push(Line {
-            //             zk: ZK {
-            //                 text: None,
-            //                 time: "8".to_string(),{
-            let mut x = xx;
-            x.push(Line {
-                zk: ZK {
-                    text: None,
-                    time: "8".to_string(),
-                    time_accuracy: None,
-                    time_zone: None,
-                    year: "9".to_string(),
-                    locale: None,
-                    location: None,
-                    hash: "10".to_string(),
-                    tags: None,
-                    categories: None,
-                    comments: None,
-                    signatures: None,
-                },
-                comments: None,
-                // citation: None,
-                citations: None,
-                signatures: None,
-            });
-            Lines {
-                lines: x,
-                hash: "7".to_string(),
-                line: Some(Line {
-                    zk: ZK {
-                        text: None,
-                        time: "8".to_string(),
-                        time_accuracy: None,
-                        time_zone: None,
-                        year: "9".to_string(),
-                        locale: None,
-                        location: None,
-                        hash: "10".to_string(),
-                        tags: None,
-                        categories: None,
-                        comments: None,
-                        signatures: None,
-                    },
-                    comments: None,
-                    // citation: None,
-                    citations: None,
-                    signatures: None,
-                }),
-            }
-        };
-        // //                 time_accuracy: None,
-        // //                 time_zone: None,
-        // //                 year: "9".to_string(),
-        // //                 locale: None,
-        // //                 location: None,
-        // //                 hash: "10".to_string(),
-        // //                 tags: None,
-        // //                 categories: None,
-        // //                 comments: None,
-        // //                 signatures: None,
-        // //             },
-        // //             comments: None,
-        // //             // citation: None,
-        // //             citations: None,
-        // //             signatures: None,
-        // //         });
-        // //         Lines {
-        // //             lines: x,
-        // //             hash: "7".to_string(),
-        // //             line: Some(Line {
-        // //                 zk: ZK {
-        // //                     text: None,
-        // //                     time: "8".to_string(),
-        // //                     time_accuracy: None,
-        // //                     time_zone: None,
-        // //                     year: "9".to_string(),
-        // //                     locale: None,
-        // //                     location: None,
-        // //                     hash: "10".to_string(),
-        // //                     tags: None,
-        // //                     categories: None,
-        // //                     comments: None,
-        // //                     signatures: None,
-        // //                 },
-        // //                 comments: None,
-        // //                 // citation: None,
-        // //                 citations: None,
-        // //                 signatures: None,
-        // //             }),
-        // //         }
-        // //     },
-        // //     identifier: None,
-        // //     identifiers: None,
-        // //     description: None,
-        // //     verifications: None,
-        // // });
         let ni = Identifier {
             name: "test".to_string(),
             aliases: None,
@@ -262,7 +140,6 @@ pub fn repl() -> ! {
         let nn = Notes {
             hash: "4".to_string(),
             identifier: ni,
-            // identifier: Identifier { },
             visibility: Some("5".to_string()),
             private: Some(true),
             public: Some(true),
@@ -331,45 +208,10 @@ pub fn repl() -> ! {
             backlinks: None,
             references: None,
         };
-        // make slipbox
-        // let zyx = {
-        //     let mut x = Vec::new();
-        //     x.push(nn);
-        //     Notes {
-        //         hash: "4".to_string(),
-        //         identifier: iii,
-        //         // identifier: Identifier { },
-        //         visibility: Some("5".to_string()),
-        //         private: Some(true),
-        //         public: Some(true),
-        //         file: Some("6".to_string()),
-        //         note: zz,
-        //         notes: z,
-        //         author_data: None,
-        //         backlinks: None,
-        //         backlinks_identifier: None,
-        //         cite: None,
-        //         cite_identifier: None,
-        //         citation_identifier: None,
-        //         citation: None,
-        //         citations: None,
-        //         citations_identifier: None,
-        //         description: None,
-        //         verifications: None,
-        //         text: None,
-        //         line: None,
-        //         lines: None,
-        //         groups: None,
-        //         local_identifier: None,
-        //         remote_identifier: None,
-        //     }
-        // };
         let n = {
             let x = Vec::new();
             x
         };
-        // make lines
-
         let l = Line {
             zk: ZK {
                 text: None,
@@ -386,7 +228,7 @@ pub fn repl() -> ! {
                 signatures: None,
             },
             comments: None,
-            // citation: None,
+            // citation: None, // TODO: is this needed
             citations: None,
             signatures: None,
         };
@@ -395,7 +237,6 @@ pub fn repl() -> ! {
             lines: vec![l],
             line: None,
         };
-        // make note
         let nt = Note {
             lines: l2,
             hash: "11".to_string(),
@@ -404,11 +245,9 @@ pub fn repl() -> ! {
             description: None,
             verifications: None,
         };
-        // make cs variable which is a Notes object
         let cs = Notes {
             hash: "4".to_string(),
             identifier: ii,
-            // identifier: Identifier { },
             visibility: Some("5".to_string()),
             private: Some(true),
             public: Some(true),
@@ -438,7 +277,6 @@ pub fn repl() -> ! {
             x.push(cs);
             x
         };
-        // make identifier
         let id = Identifier {
             name: "test".to_string(),
             aliases: None,
@@ -461,7 +299,6 @@ pub fn repl() -> ! {
             backlinks: None,
             references: None,
         };
-        // let mut daz = Vec::new();
         let line1 = Line {
             zk: ZK {
                 text: None,
@@ -478,7 +315,7 @@ pub fn repl() -> ! {
                 signatures: None,
             },
             comments: None,
-            // citation: None,
+            // citation: None, // TODO: IS THIS NEEDED
             citations: None,
             signatures: None,
         };
@@ -511,7 +348,7 @@ pub fn repl() -> ! {
                 signatures: None,
             },
             comments: None,
-            // citation: None,
+            // citation: None, // TODO: IS THIS NEEDED
             citations: None,
             signatures: None,
         };
@@ -520,7 +357,6 @@ pub fn repl() -> ! {
             lines: vec![l3l],
             line: None,
         };
-        // make note
         let nt3 = Note {
             lines: l3,
             hash: "11".to_string(),
@@ -641,154 +477,9 @@ pub fn repl() -> ! {
             binder: yyy,
         };
         // let x = nn;
-        let x //= m;
-        = Box::<Binder>::new(y);
+        // let x = m;
+        let x = Box::<Binder>::new(y);
 
         println!("${x:#?}");
     }
 }
-
-//                 Notes {
-//                     notes: x,
-//                     hash: "7".to_string(),
-//                     note: Note {
-//                         hash: "7".to_string(),
-//                         lines: {
-//                             let x = Vec::new();
-//                             x.push(
-//                                 Line {
-//                                     zk: ZK {
-//                                         text: None,
-//                                         time: "8".to_string(),
-//                                         time_accuracy: None,
-//                                         time_zone: None,
-//                                         year: "9".to_string(),
-//                                         locale: None,
-//                                         location: None,
-//                                         hash: "10".to_string(),
-//                                         tags: None,
-//                                         categories: None,
-//                                         comments: None,
-//                                         signatures: None,
-//                                     },
-//                                     comments: None,
-//                                     citation: None,
-//                                     citations: None,
-//                                     signatures: None,
-//                                 });
-//                                 Lines {
-//                                     lines: x,
-//                                     hash: "7".to_string(),
-//                                     line: Some(Line {
-//                                         zk: ZK {
-//                                             text: None,
-//                                             time: "8".to_string(),
-//                                             time_accuracy: None,
-//                                             time_zone: None,
-//                                             year: "9".to_string(),
-//                                             locale: None,
-//                                             location: None,
-//                                             hash: "10".to_string(),
-//                                             tags: None,
-//                                             categories: None,
-//                                             comments: None,
-//                                             signatures: None,
-//                                         },
-//                                         comments: None,
-//                                         citation: None,
-//                                         citations: None,
-//                                         signatures: None,
-//                                     })
-//                                 }
-//                         },
-//                         identifier: None,
-//                         identifiers: None,
-//                         description: None,
-//                         verifications: None,
-//                     },
-// identifier: None,
-// description: None,
-// verifications: None,
-// visibility: Some("5".to_string()),
-// private: Some(true),
-// public: Some(true),
-// file: Some("6".to_string()),
-// text: None,
-// line: None,
-// lines: None,
-// groups: None,
-// local_identifier: None,
-// remote_identifier: None,
-//                     author_data: None,
-//                     // author_data_hash: None,
-//                     // need a generic hash vs specific hash -- my note about "black holes" is in the set the subject "black holes" either because category=black\ holes or maybe topic is /sci/black\ holes/ or really /**/black\ holes/ or something
-//                     backlinks: None,
-//                     backlinks_identifier: None,
-// cite: None,
-// cite_identifier: None,
-// citation_identifier: None,
-// citation: None,
-// citations: None,
-// citations_identifier: None,
-//                 }
-
-//     text: "number".to_string(),
-//     line: Line {
-//             zk: ZK {
-//                 text: None,
-//                 time: "8".to_string(),
-//                 time_accuracy: None,
-//                 time_zone: None,
-//                 year: "9".to_string(),
-//                 locale: None,
-//                 location: None,
-//                 hash: "10".to_string(),
-//                 tags: None,
-//                 categories: None,
-//                 comments: None,
-//                 signatures: None,
-//             },
-//             comments: None,
-//             citation: None,
-//             citations: None,
-//             signatures: None,
-//     },
-//     lines: Vec::new().push(
-//         Line {
-//             zk: ZK {
-//                 text: None,
-//                 time: "8".to_string(),
-//                 time_accuracy: None,
-//                 time_zone: None,
-//                 year: "9".to_string(),
-//                 locale: None,
-//                 location: None,
-//                 hash: "10".to_string(),
-//                 tags: None,
-//                 categories: None,
-//                 comments: None,
-//                 signatures: None,
-//             },
-//             comments: None,
-//             citation: None,
-//             citations: None,
-//             signatures: None,
-//         }
-//         ),
-//     verifications: None,
-//     groups: None,
-//     local_identifier: None,
-//     remote_identifier: None,
-//     author_data: None,
-//     backlinks: None,
-//     backlinks_identifier: None,
-//     cite: None,
-//     cite_identifier: "number".to_string(),
-//     citation: None,
-//     citation_identifier: None,
-//     citations: None,
-//     citations_identifier: None,
-//     description: None,
-//     identifier: None,
-//     }
-// };

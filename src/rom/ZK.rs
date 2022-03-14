@@ -9,10 +9,10 @@ pub struct Binder {
     pub identifier: Option<Identifier>,
     pub ownership: Option<Ownership>,
 }
-//////     // / !Default
-//////     // / @!dez/lulz/*programming*
-//////     // / #math=hard,tutorial,programming
-//////     // / $DSP
+/// !Default
+/// @!dez/lulz/*programming*
+/// #math=hard,tutorial,programming
+/// $DSP
 
 #[derive(Debug)]
 pub struct Notes {
