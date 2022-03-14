@@ -110,8 +110,8 @@ pub struct Group {
     pub identifier: Identifier,
     pub description: Option<Description>,
     pub identifiers: Option<Identifiers>,
-    // pub bio: Option<Notes>, // TODO: OVERFLOW FIRST SUBMIT
-    // pub notes: Option<Notes>, // TODO: OVERFLOW FIRST SUBMIT
+    pub bio: Option<Vec<Note>>,   // notes itself would overflow on submit
+    pub notes: Option<Vec<Note>>, // notes itself would overflow on submit
 }
 
 #[derive(Debug)]
@@ -135,25 +135,36 @@ pub struct Author {
 
 #[derive(Debug)]
 pub struct Description {
-    // pub identifier: Identifier, // TODO: OVERFLOW FIRST SUBMIT
+    pub identifier: String,
+    pub identifier_aliases: Option<Vec<Tags>>,
     pub hash: String,
+    pub hash_aliases: Option<Vec<Tags>>,
     pub about: Option<String>,
     pub contact: Option<String>,
     pub username: Option<String>,
-    pub handle: Option<String>,
-    pub aliases: Option<Tags>,
-    pub links: Option<Tags>,
-    pub avatar: Option<String>,
-    pub location: Option<String>,
-    pub website: Option<String>,
-    pub social: Option<Tags>,
-    pub tags: Option<Tags>,
-    pub categories: Option<Categories>,
-    pub references: Option<Citations>,
-    // pub references_identifier: Option<Identifier>, // TODO: OVERFLOW FIRST SUBMIT
-    pub backlinks: Option<Citations>,
-    // pub backlinks_identifier: Option<Identifier>, // TODO: OVERFLOW FIRST SUBMIT
-    // pub verifications: Option<Verifications>, // TODO: OVERFLOW IMMEDIATE
+    // pub handle: Option<String>,
+    // pub aliases: Option<Tags>,
+    // pub links: Option<Tags>,
+    // pub avatar: Option<String>,
+    // pub location: Option<String>,
+    // pub website: Option<String>,
+    // pub social: Option<Tags>,
+    // pub tags: Option<Tags>,
+    // pub categories: Option<Categories>,
+    // // pub references: Option<Citations>,
+    pub references_identifier: String,
+    pub references_identifier_aliases: Option<Vec<Tags>>,
+    pub references_hash: String,
+    pub references_hash_aliases: Option<Vec<Tags>>,
+    // pub backlinks: Option<Citations>,
+    pub backlinks_identifier: String,
+    pub backlinks_identifier_aliases: Option<Vec<Tags>>,
+    pub backlinks_hash: String,
+    pub backlinks_hash_aliases: Option<Vec<Tags>>,
+    pub verification_hash: String,
+    pub verification_hash_aliases: Option<Vec<Tags>>,
+    pub verifications_hash: String,
+    pub verifications_hash_aliases: Option<Vec<Tags>>,
     pub created_at: Option<String>,
     pub updated_at: Option<String>,
     pub updated_hash: String,
@@ -162,7 +173,10 @@ pub struct Description {
     pub updated_reason: Option<String>,
     pub updated_code: Option<String>,
     pub deleted_at: Option<String>,
-    // pub deleted_by: Option<Verifications>, // TODO: OVERFLOW IMMEDIATE
+    pub deleted_by_verification_hash: String,
+    pub deleted_by_verification_hash_aliases: Option<Vec<Tags>>,
+    pub deleted_by_verifications_hash: String,
+    pub deleted_by_verifications_hash_aliases: Option<Vec<Tags>>,
     pub deleted_note: Option<String>,
     pub deleted_reason: Option<String>,
     pub deleted_code: Option<String>,
@@ -172,8 +186,15 @@ pub struct Description {
 pub struct Line {
     pub zk: ZK,
     pub comments: Option<Comments>,
-    // pub citation: Option<Citation>, // TODO: RECURSE COMPILE ERROR
-    pub citations: Option<Citations>,
+    pub citation_identifier: String,
+    pub citation_identifier_aliases: Option<Vec<Tags>>,
+    pub citation_hash: String,
+    pub citation_hash_aliases: Option<Vec<Tags>>,
+    // pub citations: Option<Citations>,
+    pub citations_identifier: Option<Vec<Tags>>,
+    pub citations_identifier_aliases: Option<Vec<Tags>>,
+    pub citations_hash: Option<Vec<Tags>>,
+    pub citations_hash_aliases: Option<Vec<Tags>>,
     pub signatures: Option<Signatures>,
 }
 
@@ -306,7 +327,6 @@ pub struct ZK {
     pub hash: String,
     pub tags: Option<Tags>,
     pub categories: Option<Categories>,
-    pub comments: Option<Comments>,
     pub signatures: Option<Signatures>,
 }
 
@@ -322,7 +342,7 @@ pub struct Signature {
     pub hash: String,
     pub signature: String,
     pub text: Option<String>,
-    pub line: Line,
+    // pub line: Line,
     pub identifier: Identifier,
     pub description: Option<Description>,
     pub identifiers: Option<Identifiers>,

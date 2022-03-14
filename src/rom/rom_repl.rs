@@ -46,12 +46,17 @@ pub fn repl() -> ! {
                     hash: "hashbrown milkshake".to_string(),
                     tags: None,
                     categories: None,
-                    comments: None,
                     signatures: None,
                 },
                 comments: None,
-                // citation: None, // TODO: is this needed
-                citations: None,
+                citation_identifier: "i said".to_string(),
+                citation_identifier_aliases: None,
+                citation_hash: "whatever".to_string(),
+                citation_hash_aliases: None,
+                citations_identifier: None,
+                citations_identifier_aliases: None,
+                citations_hash: None,
+                citations_hash_aliases: None,
                 signatures: None,
             }
         );
@@ -66,14 +71,19 @@ pub fn repl() -> ! {
             hash: "10".to_string(),
             tags: None,
             categories: None,
-            comments: None,
             signatures: None,
         };
         let ll = Line {
             zk: zkc,
             comments: None,
-            // citation: None, // TODO: is this needed
-            citations: None,
+            citation_identifier: "i said".to_string(),
+            citation_identifier_aliases: None,
+            citation_hash: "whatever".to_string(),
+            citation_hash_aliases: None,
+            citations_identifier: None,
+            citations_identifier_aliases: None,
+            citations_hash: None,
+            citations_hash_aliases: None,
             signatures: None,
         };
         let zxs = ZK {
@@ -87,14 +97,19 @@ pub fn repl() -> ! {
             hash: "10".to_string(),
             tags: None,
             categories: None,
-            comments: None,
             signatures: None,
         };
         let lz = Line {
             zk: zxs,
             comments: None,
-            // citation: None, // TODO: is this needed
-            citations: None,
+            citation_identifier: "i said".to_string(),
+            citation_identifier_aliases: None,
+            citation_hash: "whatever".to_string(),
+            citation_hash_aliases: None,
+            citations_identifier: None,
+            citations_identifier_aliases: None,
+            citations_hash: None,
+            citations_hash_aliases: None,
             signatures: None,
         };
         let zb = {
@@ -224,12 +239,17 @@ pub fn repl() -> ! {
                 hash: "10".to_string(),
                 tags: None,
                 categories: None,
-                comments: None,
                 signatures: None,
             },
             comments: None,
-            // citation: None, // TODO: is this needed
-            citations: None,
+            citation_identifier: "i said".to_string(),
+            citation_identifier_aliases: None,
+            citation_hash: "whatever".to_string(),
+            citation_hash_aliases: None,
+            citations_identifier: None,
+            citations_identifier_aliases: None,
+            citations_hash: None,
+            citations_hash_aliases: None,
             signatures: None,
         };
         let l2 = Lines {
@@ -311,12 +331,17 @@ pub fn repl() -> ! {
                 hash: "10".to_string(),
                 tags: None,
                 categories: None,
-                comments: None,
                 signatures: None,
             },
             comments: None,
-            // citation: None, // TODO: IS THIS NEEDED
-            citations: None,
+            citation_identifier: "i said".to_string(),
+            citation_identifier_aliases: None,
+            citation_hash: "whatever".to_string(),
+            citation_hash_aliases: None,
+            citations_identifier: None,
+            citations_identifier_aliases: None,
+            citations_hash: None,
+            citations_hash_aliases: None,
             signatures: None,
         };
         let lines2 = Lines {
@@ -344,12 +369,17 @@ pub fn repl() -> ! {
                 hash: "10".to_string(),
                 tags: None,
                 categories: None,
-                comments: None,
                 signatures: None,
             },
             comments: None,
-            // citation: None, // TODO: IS THIS NEEDED
-            citations: None,
+            citation_identifier: "i said".to_string(),
+            citation_identifier_aliases: None,
+            citation_hash: "whatever".to_string(),
+            citation_hash_aliases: None,
+            citations_identifier: None,
+            citations_identifier_aliases: None,
+            citations_hash: None,
+            citations_hash_aliases: None,
             signatures: None,
         };
         let l3 = Lines {
