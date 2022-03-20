@@ -1,7 +1,250 @@
-bbs (phpbb // usenet)
-irc
+bbs (phpbb // usenet ?? matrix ?? zulip ?? ?? ??)
+irc (matrix)
 rss
 git
 sha
 aes
 pgp
+derive-builder
+
+Processes
+{native code, shebang script, shell function, ...} × { start, kill, pipe, redirect, run with privileges, ... }
+File Descriptors
+{file, pipe, terminal, socket, ... } × {read, write, ioctl, ... }
+Hierarchical Namespaces of Unstructured Data (File systems)
+{disk, SSD, memory with tmpfs, file with loopback, ... } × { ls, mount, version with git, serve over HTTP, ... }
+
+
+
+rom client - git - github - gists - rom aggregator - web browser
+
+arbitrary hashes on values lines dates,
+if there is a hash use that in lieu
+as a base, the current git hash as a seed
+hash or concat then hash all the hashes
+store this in the file, get the file hash
+file name file hash plus git seed plus
+
+identifiers:
+
+(prefix/)*key.hashes.kdl
+rom.run/sci/trek/miri/is this a good episode why is it used as the name for the rust interpreter\??=tv,trek,kirk,season=1,episode=maybe 3,good episode,todo=soon
+rom.run/i mean, really though what is that about
+rom.run/are they trek fans? is this a common reference they both used?
+rom.run/curious fans need to know
+rom.run/end (or configurable timeout)
+
+all tags, categories, authors, signatures propogate up (sigs, etc carry context)
+
+
+
+[[tag]]
+#Tag
+#Category=value (category subset of tag)
+#lox:developing.today
+#channel:site
+
+
+tags are chat channels
+tags are everything
+
+every file name is a tag
+the full name is
+#sci/failures/hyperloop
+
+which is a .kdl file on users drive/repo
+with their own date.hash append aliases
+and also may include a gist alias for public sharing
+
+valid ways to reference
+#sci/failures
+#"sci/failures/{hyperloop, boring_company}"
+#hyperloop
+
+#hyperloop:developing.today
+is a channel at hyperloop alone
+it is a different channel from
+#sci/failures/hyperloop:developing.today
+
+
+1 sci/failures.kdl == #sci/failures
+2 sci/failures/failures.kdl == #sci/failures/failures
+3 sci/failures/autopilot.kdl == #sci/failures/autopilot
+
+[[failures]] would tag 1,2 not 3
+3 is tagged inside 1 and also indexed
+2 is tagged in 1
+1 is tagged in 2
+
+
+differences between tag, reference, backlink, channel
+context
+
+#@dezren39:developing.today
+[[@dezren39:developing.today]]
+@dezren39@developing.today
+@dezren39:developing.today
+#dezren39@developing.today
+#dezren39:developing.today
+
+
+namespace shared:
+git repo
+rom api
+rom api aggregators
+matrix (public playground)
+irc (sandbox playground for absolute random ips, proof of bridge in matrix setup.)
+zulip (developer playground, long-term knowledge source. host self. consider only for now, python is not generally to be trusted)
+keybase
+bbs (todo what will that be?)
+
+
+backends
+a directory
+git repo github
+gist broadcast
+github app integration app auto gists auto aggregates
+something something github actions hit rom.run api
+github pages
+git lab
+s3
+
+
+email newletter service
+language
+interpreter
+bytecode compiler
+engine
+cpu emulator
+custom optimized compiler
+2d graph
+math
+entity and collision handled
+latge number and string support, emoji
+configurable language/assembly setup
+notes
+aggregation
+distribution
+sharing
+chat
+bbs
+dev chat
+irc
+wiki
+developing.today website
+rom.run website
+rom.how website
+chiplox website
+chiprepl website
+challenges logic puzzles figuring out what a lemma is
+book list
+initial subject list
+steal *chan, wiki*, dewey, original zk subjects
+automatically aggregrate verified  tweets
+automatically aggregrate own tweets
+automatically tweet certain notes
+automatically sync rss etc feeds
+provide rss api
+feedly just works
+use github pages
+github actions
+
+
+
+rom.how/kanye
+  H = da5abfd621e60a3bb6472f521b7c2459896e50d9 = sha1(kanye)
+    search for H (index/database/redis to cut down this search)
+      across all prefixes locally
+        keys
+        tags/categories
+        authors
+        groups
+        binders, slipboxes
+        contents of lines in notes anywhere
+      same for local remote (github repo if there is a git diff)
+      same of local remote tap (preferred aggregator upstream)
+    vary across known aliases for H and for 'kanye' "Kanye West" "West, Kanye" "Kim's Ex"
+  strategy is most specific first, stream return as received though.
+  just keep dumping into stream until page limit is hit. or figure out something
+
+
+  rom.how/calculus, chess, graphs, youtube
+  do all the hashbrown stuff above but then sort by who has the most of each
+    either by who has most of all of them or more likely sort by each, asc, allowing chess desc, graphs desc, youtube
+    justmatch sql
+    just put it in a dtabase and expose sql
+    something with redis
+    how does algolia work
+    how does ycomibinator work
+    just use pagerank lolololollo
+    other search options
+    rest to expose all the data, because then its all 'normal' to ... web people
+    use github integrate entirely as recommended path, but also support gitlab, personal host, paid hosting, enterprise
+
+
+
+
+
+
+aggregation formats
+    cannot send/receive the true data usually, for privacy and data bandwidth
+      for this, it is assumed there are many other ways to get into a similar scenario, this is just one example
+    in this example, the aggregator will be trustedfor convenience, but could be used without trust if there were more infrastructure
+    note is smallest shareable unit, it is made of lines
+    can also share notes(note*N), slipboxes(notes*N), and binders(slipboxes*n)
+    groups, authors, signatures, verifications are also objects that are needed
+    categories, tags, and other meta can be appended to help get to the hash or a hash aliases
+    way to handle deletes/redirects/reroutes
+    verifications
+    one way
+      user uses web browser to post rom.run/1/i just saw a turkey in the road lol. it just stared at me.//fin
+      rom.run caches and posts message for backend
+      rom backend takes message and either posts public gist/html OR internally commits to the user's Git.
+      rom backend makes a private gist for this note and registers it in the aggregation queue
+      aggregator picks up gist, internally validates, caches in index for up to N days
+      upon reaching validator index, either push or pull hash differences.
+      master index list to look for newest public posts, random delay,
+      largest aggregators will need to self-host and support users in github.
+      aggregator is responsible for distribution to appropriate list, regardless of push or pull
+      based on validation, user's hashes (which aggregator doesnt know) will get sent to the right Groups
+      so if aggregator doesnt have full access to note, provide hash for verifications? something. F
+
+      just redo ip except for a hobby project
+      how hard could it be
+
+
+
+index formats
+refs formats
+cite formats
+      all of these are the same and a subet of aggregation formats
+      built locally and typically hidden from view
+      pulls all the tags from the lines and notes and stores hashes hash aliases,identifiers, tags, etc
+      test whether everything sha1 internally or use text because fuzziness
+        either way user input must propogate for final verifications
+
+
+identifiers
+      ways to get to the right objects
+      usually either text or hash
+      should always be hash
+      base case of hash is the text inputted
+      be flexible, pull in more than needed if sparse input
+        but tell user what didnt show up or why what did
+      dont typically fuzzy search any hashbrown
+      dont typically fuzzy search, rely on manual aliases
+      your aliases are more specific than one found in one of your groups high prioritywhich is more specific than one found popular from remote tap root
+      could be a user, group, note, whatever,category, tag, value of Category
+
+use ssql
+use graphql
+
+if you can see athing you follow it gets caches locally by fdefault
+
+
+
+
+      !!!! setup priority fields allow any string
+
+
+fancy graphs of nodes
